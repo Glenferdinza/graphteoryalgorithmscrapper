@@ -104,10 +104,10 @@ Hasil analisis akan menghasilkan:
 └── README.md
 ```
 
-## Pembuat
-
-**Glenferdinza**
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## Created By
+
+**Glenferdinza**
