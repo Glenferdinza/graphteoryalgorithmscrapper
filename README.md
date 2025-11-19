@@ -1,4 +1,6 @@
-# Graph Theory Algorithms - Comparative Study for Water Ambulance Routing
+# Graph Theory Algorithms 
+
+Comparative Study for Water Ambulance Routing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
