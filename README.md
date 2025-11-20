@@ -430,15 +430,15 @@ Dokumentasi di `ppt_graphs/README.md` mencakup untuk setiap grafik penjelasan ma
 
 | Algorithm | Time (min) | Stops | Route | Iterations | Exec Time (ms) | Optimal? |
 |-----------|-----------|-------|-------|-----------|----------------|----------|
-| **Dijkstra** | **50** | 3 | D1→D5→D6→H1 | 11 | 0.095 | ✅ Yes |
-| **Bellman-Ford** | **50** | 3 | D1→D5→D6→H1 | 390 | 0.427 | ✅ Yes |
-| **Floyd-Warshall** | **50** | 3 | D1→D5→D6→H1 | 4096 | 1.788 | ✅ Yes |
-| **Johnson** | **50** | 3 | D1→D5→D6→H1 | 683 | 0.771 | ✅ Yes |
-| **Topological Sort** | **50** | 3 | D1→D5→D6→H1 | 16 | 0.204 | ✅ Yes |
-| DFS | 55 | 2 | D1→H3→H1 | 3 | 0.046 | ❌ No |
-| BFS | 55 | 2 | D1→H3→H1 | 7 | 0.038 | ❌ No |
-| A* | 55 | 2 | D1→H3→H1 | 3 | 0.100 | ❌ No |
-| Multi-Source BFS | 55 | 2 | D1→H3→H1 | 7 | 0.114 | ❌ No |
+| **Dijkstra** | **50** | 3 | D1→D5→D6→H1 | 11 | 0.095 | Yes |
+| **Bellman-Ford** | **50** | 3 | D1→D5→D6→H1 | 390 | 0.427 | Yes |
+| **Floyd-Warshall** | **50** | 3 | D1→D5→D6→H1 | 4096 | 1.788 | Yes |
+| **Johnson** | **50** | 3 | D1→D5→D6→H1 | 683 | 0.771 | Yes |
+| **Topological Sort** | **50** | 3 | D1→D5→D6→H1 | 16 | 0.204 | Yes |
+| DFS | 55 | 2 | D1→H3→H1 | 3 | 0.046 | No |
+| BFS | 55 | 2 | D1→H3→H1 | 7 | 0.038 | No |
+| A* | 55 | 2 | D1→H3→H1 | 3 | 0.100 | No |
+| Multi-Source BFS | 55 | 2 | D1→H3→H1 | 7 | 0.114 | No |
 
 **Best Overall: Dijkstra**
 - Optimal solution (50 min)
@@ -447,8 +447,8 @@ Dokumentasi di `ppt_graphs/README.md` mencakup untuk setiap grafik penjelasan ma
 - Balance terbaik untuk real-time routing
 
 **Paradox Finding:**
-- Optimal route: 3 stops, 50 min ✅
-- Suboptimal route: 2 stops, 55 min ❌
+- Optimal route: 3 stops, 50 min
+- Suboptimal route: 2 stops, 55 min
 - **Kesimpulan**: Fewer stops ≠ faster route (weighted graph optimization)
 
 ### Machine Learning Results
@@ -471,24 +471,24 @@ Dokumentasi di `ppt_graphs/README.md` mencakup untuk setiap grafik penjelasan ma
 ### 1. Algorithm Selection Guidelines
 
 **For Real-Time Emergency Routing (Water Ambulance):**
-- ✅ **Primary**: Dijkstra
+- **Primary**: Dijkstra
   - Reason: Optimal solution + fast computation
   - Use case: Single source to single destination
   
-- ✅ **Backup**: A* (if good heuristic available)
+- **Backup**: A* (if good heuristic available)
   - Reason: Faster with proper heuristic
   - Use case: Known geographic coordinates
 
-- ❌ **Avoid**: Floyd-Warshall, Bellman-Ford
+- **Avoid**: Floyd-Warshall, Bellman-Ford
   - Reason: Overkill untuk single-pair shortest path
   - Use case: Hanya jika perlu all-pairs distances
 
 **For Multi-Destination Planning:**
-- ✅ Floyd-Warshall (compute once, query many times)
-- ✅ Johnson (untuk sparse graphs)
+- Floyd-Warshall (compute once, query many times)
+- Johnson (untuk sparse graphs)
 
 **For Quick Approximation (Non-Critical):**
-- ✅ BFS/DFS (sangat cepat, acceptable untuk non-emergency)
+- BFS/DFS (sangat cepat, acceptable untuk non-emergency)
 
 ### 2. Network Design Insights
 
@@ -635,9 +635,9 @@ pip install kaleido
 
 ### Getting Help
 
-- 📧 Email: (add your email here)
-- 💬 Issues: https://github.com/Glenferdinza/graphteoryalgorithmscrapper/issues
-- 📚 Docs: See ROUTING_DOCUMENTATION.md dan GEPHI_GUIDE.md
+- Email: (add your email here)
+- Issues: https://github.com/Glenferdinza/graphteoryalgorithmscrapper/issues
+- Docs: See ROUTING_DOCUMENTATION.md dan GEPHI_GUIDE.md
 
 ## Acknowledgments
 
@@ -651,8 +651,7 @@ pip install kaleido
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Project Status
-
-✅ **Completed Components:**
+ **Completed Components:**
 - Benchmark data generation (2,152 records)
 - Performance analysis (9 algorithms)
 - Real-world routing implementation (Jakarta waterways)
@@ -661,12 +660,12 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 - Gephi network exports
 - Comprehensive documentation
 
-🚧 **In Progress:**
+ **In Progress:**
 - Mobile app development
 - Real-time traffic integration
 - Extended network coverage
 
-📋 **Planned:**
+ **Planned:**
 - Cloud deployment
 - API development
 - Multi-language support
@@ -678,10 +677,4 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 **Glenferdinza**  
 Graph Theory & Algorithms - Final Project 2025
 
-*For academic purposes - Universitas (add university name)*
-
----
-
-## Created By
-
-**Glenferdinza**
+*For academic purposes - Universitas Negeri Yogyakarta*
