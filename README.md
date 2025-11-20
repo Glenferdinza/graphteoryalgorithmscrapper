@@ -9,12 +9,12 @@ Implementasi dan analisis komprehensif 9 algoritma pencarian jalur terpendek unt
 
 ## Quick Links
 
-📚 **[FAQ - Frequently Asked Questions](FAQ_PROJECT.md)** - Penjelasan detail tentang routing paths, algoritma, network specifications, dan struktur file  
-📖 **[Routing Documentation](ROUTING_DOCUMENTATION.md)** - Panduan lengkap sistem routing ambulans air  
-📊 **[Enhanced Visualization Docs](ENHANCED_VISUALIZATION_DOC.md)** - Dokumentasi visualisasi lanjutan  
-🔧 **[Gephi Guide](GEPHI_GUIDE.md)** - Tutorial lengkap Gephi network visualization  
-⚡ **[Gephi Quickstart](GEPHI_QUICKSTART.md)** - Quick reference untuk Gephi  
-📝 **[Project Summary](PROJECT_SUMMARY.md)** - Ringkasan komprehensif project
+**[FAQ - Frequently Asked Questions](FAQ_PROJECT.md)** - Penjelasan detail tentang routing paths, algoritma, network specifications, dan struktur file  
+**[Routing Documentation](ROUTING_DOCUMENTATION.md)** - Panduan lengkap sistem routing ambulans air  
+**[Enhanced Visualization Docs](ENHANCED_VISUALIZATION_DOC.md)** - Dokumentasi visualisasi lanjutan  
+**[Gephi Guide](GEPHI_GUIDE.md)** - Tutorial lengkap Gephi network visualization  
+**[Gephi Quickstart](GEPHI_QUICKSTART.md)** - Quick reference untuk Gephi  
+**[Project Summary](PROJECT_SUMMARY.md)** - Ringkasan komprehensif project
 
 ## Deskripsi Project
 
