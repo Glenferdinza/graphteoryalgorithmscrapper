@@ -49,9 +49,9 @@ Tabel detail ini menyajikan perbandingan lengkap rute yang dihasilkan oleh setia
 
 ---
 
-### 🔧 **TIER 3: TECHNICAL DETAILS (Optional/Backup)**
+### **TIER 3: TECHNICAL DETAILS (Optional/Backup)**
 
-#### 8️⃣ **Algorithm Comparison Bar Chart**
+#### **Algorithm Comparison Bar Chart**
 **File**: `8_algorithm_comparison.png` (dari `img/algorithm_comparison.html`)
 
 **Deskripsi**:
@@ -61,7 +61,7 @@ Simple horizontal bar chart execution time comparison.
 
 ---
 
-## 📝 **Panduan Penggunaan di PPT**
+## **Panduan Penggunaan di PPT**
 
 ### **Struktur PPT yang Direkomendasikan**
 
@@ -105,7 +105,7 @@ APPENDIX (Backup slides)
 
 ---
 
-## 🎨 **Tips Presentasi**
+## **Tips Presentasi**
 
 ### **Untuk Setiap Grafik:**
 
@@ -133,7 +133,7 @@ APPENDIX (Backup slides)
 
 ---
 
-## 💡 **Key Messages untuk Setiap Grafik**
+## **Key Messages untuk Setiap Grafik**
 
 | Grafik | Key Message 1 | Key Message 2 | Key Message 3 |
 |--------|---------------|---------------|---------------|
@@ -142,22 +142,22 @@ APPENDIX (Backup slides)
 | **Graph 3** | Dijkstra = Balanced | Trade-offs visible | A* failed (bad heuristic) |
 | **Graph 4** | Clear ranking: Dijkstra #1 | Overall score: 2.5 vs 5.0 | Top 5 all optimal |
 | **Graph 5** | Same hops, different time | Weights matter, not hops | Optimal ≠ Minimum stops |
-| **Graph 6** | 🔥 **REAL IMPLEMENTATION** | D1→D5→D6→H1 = 50 min | Step-by-step visualization |
+| **Graph 6** | **REAL IMPLEMENTATION** | D1→D5→D6→H1 = 50 min | Step-by-step visualization |
 | **Graph 7** | Optimal converge same path | Suboptimal diverge | Validates correctness |
 
 ---
 
-## 📊 **Quick Reference: Kapan Pakai Grafik Apa**
+## **Quick Reference: Kapan Pakai Grafik Apa**
 
 ### **Jika Waktu Terbatas (10 slides total)**:
-✅ **MUST INCLUDE**:
+**MUST INCLUDE**:
 1. Graph 1: Multi-Metric
 2. Graph 4: Ranking Table
 3. **Graph 6: Optimal Route Map** ⭐⭐⭐
 4. Graph 7: Path Details
 
 ### **Jika Waktu Cukup (15 slides)**:
-✅ **INCLUDE**:
+**INCLUDE**:
 1. Graph 1: Multi-Metric
 2. Graph 2: Efficiency Scatter
 3. Graph 4: Ranking Table
@@ -166,7 +166,7 @@ APPENDIX (Backup slides)
 6. Graph 7: Path Details
 
 ### **Jika Waktu Banyak (18+ slides)**:
-✅ **ALL IN**:
+**ALL IN**:
 1. Graph 1: Multi-Metric
 2. Graph 2: Efficiency Scatter
 3. Graph 3: Radar Chart
@@ -178,30 +178,30 @@ APPENDIX (Backup slides)
 
 ---
 
-## 🔥 **CRITICAL: Graph 6 (Optimal Route) adalah JANTUNG Presentasi!**
+## **CRITICAL: Graph 6 (Optimal Route) adalah JANTUNG Presentasi!**
 
 **WHY?**
-- ✅ **Proof of concept**: Showing it actually works in real Jakarta waterways
-- ✅ **Visual impact**: Maps always engage audience better than charts
-- ✅ **Non-technical friendly**: Anyone can understand a route on a map
-- ✅ **Real-world relevance**: Emergency ambulance routing = life-saving application
-- ✅ **Validates all analysis**: All the benchmarks lead to THIS result
+- **Proof of concept**: Showing it actually works in real Jakarta waterways
+- **Visual impact**: Maps always engage audience better than charts
+- **Non-technical friendly**: Anyone can understand a route on a map
+- **Real-world relevance**: Emergency ambulance routing = life-saving application
+- **Validates all analysis**: All the benchmarks lead to THIS result
 
 **Tanpa Graph 6**:
-- ❌ Presentasi terlalu abstrak/theoretical
-- ❌ Audience bertanya: "Jadi hasilnya gimana?"
-- ❌ Tidak ada "wow factor"
-- ❌ Susah jelasin real-world impact
+- Presentasi terlalu abstrak/theoretical
+- Audience bertanya: "Jadi hasilnya gimana?"
+- Tidak ada "wow factor"
+- Susah jelasin real-world impact
 
 **Dengan Graph 6**:
-- ✅ "Ini lho rute ambulans air yang optimal!"
-- ✅ Clear start → steps → finish
-- ✅ Concrete numbers: 50 menit, 4 locations
-- ✅ Comparison visible: Why 55 min route is worse
+- "Ini lho rute ambulans air yang optimal!"
+- Clear start → steps → finish
+- Concrete numbers: 50 menit, 4 locations
+- Comparison visible: Why 55 min route is worse
 
 ---
 
-## 📥 **File Management**
+## **File Management**
 
 ### **Source Files** (jangan hapus):
 - `img/multi_metric_analysis.png`
@@ -227,7 +227,7 @@ Copy-Item "img/path_details.png" "ppt_graphs/7_path_details.png"
 
 ---
 
-## 🎓 **Untuk Sidang/Defense**
+## **Untuk Sidang/Defense**
 
 ### **Antisipasi Pertanyaan**:
 
@@ -248,7 +248,7 @@ Copy-Item "img/path_details.png" "ppt_graphs/7_path_details.png"
 
 ---
 
-## 📞 **Support**
+## **Support**
 
 Jika ada pertanyaan tentang grafik atau butuh modifikasi:
 1. Check source files di folder `img/`
@@ -259,7 +259,7 @@ Jika ada pertanyaan tentang grafik atau butuh modifikasi:
 
 ---
 
-## ✅ **Checklist Sebelum Presentasi**
+## **Checklist Sebelum Presentasi**
 
 - [ ] Semua 7 grafik sudah di-copy ke folder `ppt_graphs/`
 - [ ] Graph 6 (Optimal Route) sudah di-generate dengan annotations lengkap
@@ -271,8 +271,5 @@ Jika ada pertanyaan tentang grafik atau butuh modifikasi:
 
 ---
 
-**Good luck dengan presentasi! 🚀**
-
-_Generated: 2025-11-20_
 _Project: Water Ambulance Routing - Jakarta Waterways Network_
 _Algorithms: 9 (Dijkstra, Bellman-Ford, Floyd-Warshall, Johnson, Topological Sort, DFS, BFS, A*, Multi-Source BFS)_
