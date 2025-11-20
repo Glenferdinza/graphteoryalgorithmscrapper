@@ -42,3 +42,13 @@ Thumbs.db
 
 # Large data files (optional)
 # csv/*.csv
+
+# File md
+
+#python
+copy_graphs_to_ppt.py
+generate_network.py
+
+Folder
+img/ *.html
+
