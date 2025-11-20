@@ -1,0 +1,7 @@
+Source,Target,Weight,ExecutionTimeDiff,Type
+A*,Dijkstra,0.000388,2575.99,Undirected
+A*,Multi-Source BFS,0.000535,1867.97,Undirected
+BFS,DFS,0.000855,1168.28,Undirected
+BFS,Multi-Source BFS,0.000431,2318.15,Undirected
+BFS,Topological Sort,0.00035,2856.32,Undirected
+DFS,Topological Sort,0.000592,1688.04,Undirected

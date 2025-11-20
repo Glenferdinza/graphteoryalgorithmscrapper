@@ -1,0 +1,10 @@
+Id,Label,AvgExecutionTime,StdExecutionTime,SampleCount
+A*,A*,15532.81,21657.31,229
+BFS,BFS,11346.69,15716.65,253
+Bellman-Ford,Bellman-Ford,39900.28,56784.44,240
+DFS,DFS,10178.41,13337.61,227
+Dijkstra,Dijkstra,18108.8,25624.76,235
+Floyd-Warshall,Floyd-Warshall,61309.87,84412.73,234
+Johnson,Johnson,33913.73,45707.83,235
+Multi-Source BFS,Multi-Source BFS,13664.84,18369.3,248
+Topological Sort,Topological Sort,8490.37,11799.82,251

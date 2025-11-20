@@ -1,0 +1,10 @@
+Algorithm,Path,Time (minutes),Path Length,Iterations,Execution Time (ms)
+DFS,"['D1', 'H3', 'H1']",55,2,3,0.046
+BFS,"['D1', 'H3', 'H1']",55,2,7,0.038
+Dijkstra,"['D1', 'D5', 'D6', 'H1']",50,3,11,0.095
+A*,"['D1', 'H3', 'H1']",55,2,3,0.103
+Bellman-Ford,"['D1', 'D5', 'D6', 'H1']",50,3,390,0.427
+Floyd-Warshall,"['D1', 'D5', 'D6', 'H1']",50,3,4096,1.788
+Johnson,"['D1', 'D5', 'D6', 'H1']",50,3,683,0.771
+Topological Sort,"['D1', 'D5', 'D6', 'H1']",50,3,16,0.204
+Multi-Source BFS,"['D1', 'H3', 'H1']",55,2,7,0.176

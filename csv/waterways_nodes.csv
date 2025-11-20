@@ -1,0 +1,17 @@
+Id,Label,Type,Latitude,Longitude,NodeSize,Color
+D1,Dermaga Muara Angke,dermaga,-6.1075,106.7547,30,#4A90E2
+D2,Dermaga Ancol,dermaga,-6.1256,106.8436,30,#4A90E2
+D3,Dermaga Kali Besar,dermaga,-6.1378,106.8142,30,#4A90E2
+D4,Dermaga Sunda Kelapa,dermaga,-6.1203,106.8074,30,#4A90E2
+D5,Dermaga Muara Karang,dermaga,-6.1145,106.7689,30,#4A90E2
+D6,Dermaga Pluit,dermaga,-6.1189,106.7908,30,#4A90E2
+D7,Dermaga Marunda,dermaga,-6.1089,106.9456,30,#4A90E2
+D8,Dermaga Tanjung Priok,dermaga,-6.1067,106.8956,30,#4A90E2
+H1,RS Siloam Kebon Jeruk,hospital,-6.1893,106.7842,40,#E63946
+H2,RS Pluit,hospital,-6.1256,106.7923,40,#E63946
+H3,RSPI Puri Indah,hospital,-6.1878,106.7456,40,#E63946
+H4,RS Atmajaya,hospital,-6.1356,106.8145,40,#E63946
+H5,RS Husada,hospital,-6.1445,106.8334,40,#E63946
+H6,RS Pantai Indah Kapuk,hospital,-6.1289,106.7623,40,#E63946
+H7,RS Premier Jatinegara,hospital,-6.2156,106.8645,40,#E63946
+H8,RS Koja,hospital,-6.1089,106.9123,40,#E63946

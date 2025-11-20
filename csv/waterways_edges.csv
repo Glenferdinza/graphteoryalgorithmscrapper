@@ -1,0 +1,27 @@
+Source,Target,Type,Distance,Time,Weight,Label
+D1,D5,Undirected,1200,8,8,8 min
+D5,D6,Undirected,1500,10,10,10 min
+D6,D4,Undirected,2100,14,14,14 min
+D4,D3,Undirected,800,6,6,6 min
+D3,D2,Undirected,1800,12,12,12 min
+D2,D8,Undirected,3500,22,22,22 min
+D8,D7,Undirected,4200,28,28,28 min
+D1,H3,Undirected,5600,35,35,35 min
+D5,H6,Undirected,2800,18,18,18 min
+D6,H2,Undirected,1100,8,8,8 min
+D6,H1,Undirected,5100,32,32,32 min
+D4,H4,Undirected,1200,9,9,9 min
+D3,H4,Undirected,900,7,7,7 min
+D3,H5,Undirected,2100,14,14,14 min
+D2,H5,Undirected,2800,18,18,18 min
+D8,H8,Undirected,1500,11,11,11 min
+D7,H7,Undirected,8500,52,52,52 min
+H1,H3,Undirected,3200,20,20,20 min
+H1,H2,Undirected,4800,30,30,30 min
+H2,H6,Undirected,2400,16,16,16 min
+H4,H5,Undirected,1800,12,12,12 min
+H5,H7,Undirected,7200,45,45,45 min
+H8,H7,Undirected,9100,56,56,56 min
+D5,H2,Undirected,2600,17,17,17 min
+D4,H2,Undirected,2900,19,19,19 min
+D6,H6,Undirected,3100,20,20,20 min
