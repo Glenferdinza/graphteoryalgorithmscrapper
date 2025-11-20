@@ -160,14 +160,30 @@ Output:
 python generate_enhanced_viz.py
 ```
 
-Output 5 visualisasi tambahan:
-- `img/multi_metric_analysis.png` - 4-panel dashboard
-- `img/efficiency_scatter.png` - Computational vs quality
-- `img/radar_complexity.png` - Multi-dimensional radar
-- `img/comprehensive_ranking.png` - Performance scorecard
-- `img/path_complexity.png` - Stops vs time analysis
+Output 5 visualisasi tambahan di folder `img/`:
+- `multi_metric_analysis.png/.html` - 4-panel dashboard
+- `efficiency_scatter.png/.html` - Computational vs quality
+- `radar_complexity.png/.html` - Multi-dimensional radar
+- `comprehensive_ranking.png/.html` - Performance scorecard
+- `path_complexity.png/.html` - Stops vs time analysis
 
-#### 5. Generate Network untuk Gephi
+#### 5. Copy Grafik ke Folder PPT
+```bash
+python copy_graphs_to_ppt.py
+```
+
+Output: Semua grafik ter-copy ke folder `ppt_graphs/` dengan naming yang jelas:
+- `1_multi_metric_comparison.png/.html`
+- `2_efficiency_scatter.png/.html`
+- `3_radar_characteristics.png/.html`
+- `4_ranking_table.png/.html`
+- `5_path_complexity.png/.html`
+- `6_optimal_route_map.png/.html`
+- `7_path_details.png/.html`
+
+Dokumentasi lengkap tersedia di `ppt_graphs/README.md` dengan penjelasan paragraf deskriptif untuk setiap grafik, termasuk maksud, tujuan, dan panduan narasi presentasi.
+
+#### 6. Generate Network untuk Gephi
 
 **Algorithm Similarity Network:**
 ```bash
@@ -212,13 +228,6 @@ tugasakhir/
 │   └── waterways_network_stats.csv           # Gephi: Waterways network stats
 │
 ├── img/                                   # Visualizations
-│   ├── ppt_graph_1_execution_time.png        # Bar chart: Execution time comparison
-│   ├── ppt_graph_2_multi_metric.png          # Grouped bar: Multi-metric normalized
-│   ├── ppt_graph_3_scalability.png           # Line chart: Scalability analysis
-│   ├── ppt_graph_4_heatmap.png               # Heatmap: Performance matrix
-│   ├── ppt_graph_5_radar_top5.png            # Radar: Top 5 algorithms
-│   ├── ppt_graph_6_summary_table.png         # Table: Comprehensive ranking
-│   │
 │   ├── network_map.png & .html               # Jakarta waterways network map
 │   ├── optimal_route.png & .html             # Optimal route visualization
 │   ├── algorithm_comparison.png & .html      # Algorithm performance bars
@@ -230,19 +239,31 @@ tugasakhir/
 │   ├── comprehensive_ranking.png & .html     # Performance scorecard
 │   └── path_complexity.png & .html           # Path stops vs time analysis
 │
+├── ppt_graphs/                            # Grafik Siap PPT
+│   ├── 1_multi_metric_comparison.png & .html # Multi-metrik perbandingan
+│   ├── 2_efficiency_scatter.png & .html      # Efisiensi komputasi scatter
+│   ├── 3_radar_characteristics.png & .html   # Radar karakteristik algoritma
+│   ├── 4_ranking_table.png & .html           # Tabel ranking komprehensif
+│   ├── 5_path_complexity.png & .html         # Analisis kompleksitas rute
+│   ├── 6_optimal_route_map.png & .html       # Peta rute optimal Jakarta
+│   ├── 7_path_details.png & .html            # Detail perbandingan rute
+│   └── README.md                             # Dokumentasi grafik presentasi
+│
 ├── Core Scripts
 │   ├── scraper.py                            # Benchmark data generator
 │   ├── analysis.ipynb                        # Main analysis notebook (Jupyter)
 │   ├── water_ambulance_routing.py            # Real-world routing implementation
 │   ├── generate_enhanced_viz.py              # Enhanced visualizations generator
 │   ├── generate_network.py                   # Gephi algorithm network generator
-│   └── generate_waterways_gephi.py           # Gephi waterways network generator
+│   ├── generate_waterways_gephi.py           # Gephi waterways network generator
+│   └── copy_graphs_to_ppt.py                 # Copy grafik ke folder ppt_graphs
 │
 ├── Documentation
 │   ├── README.md                             # This file
 │   ├── ROUTING_DOCUMENTATION.md              # Routing system documentation
 │   ├── ENHANCED_VISUALIZATION_DOC.md         # Enhanced viz documentation
 │   ├── PROJECT_SUMMARY.md                    # Comprehensive project summary
+│   ├── FAQ_PROJECT.md                        # Frequently Asked Questions
 │   ├── GEPHI_GUIDE.md                        # Detailed Gephi tutorial
 │   └── GEPHI_QUICKSTART.md                   # Quick Gephi reference
 │
@@ -270,26 +291,39 @@ tugasakhir/
 
 ### Visualizations (img/)
 
-**Benchmark Analysis (6 files):**
-1. Execution time comparison - Horizontal bar chart
-2. Multi-metric comparison - Grouped bars (normalized)
-3. Scalability analysis - Line chart with markers
-4. Performance heatmap - Color-coded matrix
-5. Radar chart - Top 5 algorithms
-6. Summary table - Comprehensive ranking
+**Routing Implementation (4 base files + HTML):**
+1. Network map - Interactive Jakarta waterways
+2. Optimal route - Highlighted path D1→D5→D6→H1
+3. Algorithm comparison - Travel time bars
+4. Path details - Route comparison table
 
-**Routing Implementation (4 files + HTML):**
-7. Network map - Interactive Jakarta waterways
-8. Optimal route - Highlighted path D1→D5→D6→H1
-9. Algorithm comparison - Travel time bars
-10. Path details - Route comparison table
+**Enhanced Analysis (5 advanced files + HTML):**
+5. Multi-metric dashboard - 4-panel analysis
+6. Efficiency scatter - Computational vs quality
+7. Radar complexity - Multi-dimensional profiles
+8. Comprehensive ranking - Color-coded scorecard
+9. Path complexity - Stops vs time paradox
 
-**Enhanced Analysis (5 files + HTML):**
-11. Multi-metric dashboard - 4-panel analysis
-12. Efficiency scatter - Computational vs quality
-13. Radar complexity - Multi-dimensional profiles
-14. Comprehensive ranking - Color-coded scorecard
-15. Path complexity - Stops vs time paradox
+**PPT-Ready Visualizations (ppt_graphs/ folder):**
+
+Folder khusus berisi 7 grafik berkualitas tinggi dengan layout optimal untuk presentasi PowerPoint. Setiap grafik sudah disesuaikan dengan:
+- Title positioning yang tidak mepet ke atas
+- Legend placement yang tidak menutupi chart
+- Margin dan spacing yang tepat
+- Format PNG dan HTML interaktif
+- Dokumentasi lengkap dalam format paragraf deskriptif
+
+File-file di folder ppt_graphs:
+1. `1_multi_metric_comparison.png/.html` - Perbandingan multi-metrik 9 algoritma
+2. `2_efficiency_scatter.png/.html` - Scatter plot efisiensi komputasi vs kualitas
+3. `3_radar_characteristics.png/.html` - Radar chart karakteristik algoritma
+4. `4_ranking_table.png/.html` - Tabel ranking komprehensif
+5. `5_path_complexity.png/.html` - Analisis kompleksitas rute
+6. `6_optimal_route_map.png/.html` - Peta rute optimal Jakarta dengan annotations
+7. `7_path_details.png/.html` - Detail perbandingan rute semua algoritma
+8. `README.md` - Dokumentasi grafik dengan penjelasan paragraf deskriptif
+
+Dokumentasi di `ppt_graphs/README.md` mencakup untuk setiap grafik penjelasan maksud grafik, tujuan penggunaan, insight yang dapat disampaikan, dan panduan untuk menyusun narasi presentasi.
 
 ### Scripts
 
