@@ -44,9 +44,11 @@ cd graphteoryalgorithmscrapper
 ```
 
 2. Buat virtual environment (opsional tapi disarankan)
+Kalau misal ada .venv hasil dari clone, maka hapus terlebih dahulu baru ketik script dibawah ini di terminal:
+
 ```bash
 python -m venv .venv
-.venv\Scripts\activate  # Windows
+cd .venv\Scripts\activate  # Windows
 # source .venv/bin/activate  # Linux/Mac
 ```
 
@@ -65,7 +67,9 @@ File `csv/data.csv` akan dibuat dengan 2,152 records benchmark data.
 
 2. **Jalankan Analysis Notebook**
 
-Buka Jupyter Notebook:
+Buka Jupyter Notebook atau ekstensi pylance(.ipynb):   
+Dan klik Ctrl + Shift + K, lalu pilih Pyhton interpreter, dan pilih .venv dengan menyesuaikan versi python masing2     
+
 ```bash
 jupyter notebook analysis.ipynb
 ```
