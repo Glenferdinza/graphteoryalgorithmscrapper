@@ -7,6 +7,15 @@ Water Ambulance Routing System - Jakarta Waterways Network
 
 Implementasi dan analisis komprehensif 9 algoritma pencarian jalur terpendek untuk sistem routing ambulans air di Jakarta. Project ini mencakup benchmark performance analysis, implementasi real-world network, visualisasi interaktif, dan network analysis menggunakan Gephi.
 
+## Quick Links
+
+📚 **[FAQ - Frequently Asked Questions](FAQ_PROJECT.md)** - Penjelasan detail tentang routing paths, algoritma, network specifications, dan struktur file  
+📖 **[Routing Documentation](ROUTING_DOCUMENTATION.md)** - Panduan lengkap sistem routing ambulans air  
+📊 **[Enhanced Visualization Docs](ENHANCED_VISUALIZATION_DOC.md)** - Dokumentasi visualisasi lanjutan  
+🔧 **[Gephi Guide](GEPHI_GUIDE.md)** - Tutorial lengkap Gephi network visualization  
+⚡ **[Gephi Quickstart](GEPHI_QUICKSTART.md)** - Quick reference untuk Gephi  
+📝 **[Project Summary](PROJECT_SUMMARY.md)** - Ringkasan komprehensif project
+
 ## Deskripsi Project
 
 Project ini terdiri dari 3 komponen utama:
