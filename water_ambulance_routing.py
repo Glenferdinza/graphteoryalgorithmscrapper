@@ -119,7 +119,7 @@ class JakartaWaterwaysNetwork:
         return self.G[source][target]
     
     def visualize_network(self, path=None, title="Jakarta Waterways Network"):
-        """Visualisasi network dengan Plotly (interactive)"""
+        """Visualisasi network dengan Plotly (interactive) - Enhanced dengan annotations"""
         
         # Extract coordinates
         pos = {node: (data['lon'], data['lat']) 
@@ -183,7 +183,11 @@ class JakartaWaterwaysNetwork:
         )
         
         # Highlight path if provided
+        data_traces = [edge_trace, node_trace]
+        annotations = []
+        
         if path:
+            # Enhanced path visualization dengan garis tebal dan warna mencolok
             path_x = []
             path_y = []
             for i in range(len(path) - 1):
@@ -194,28 +198,137 @@ class JakartaWaterwaysNetwork:
             
             path_trace = go.Scatter(
                 x=path_x, y=path_y,
-                line=dict(width=4, color='#2A9D8F'),
+                line=dict(width=6, color='#FFD700'),  # Gold color untuk optimal path
                 mode='lines',
-                name='Rute Optimal'
+                name='Rute Optimal',
+                showlegend=True
             )
+            data_traces.append(path_trace)
             
-            data = [edge_trace, node_trace, path_trace]
-        else:
-            data = [edge_trace, node_trace]
+            # Add numbered arrows and step labels for each segment in the path
+            total_time = 0
+            for i in range(len(path) - 1):
+                start_node = path[i]
+                end_node = path[i+1]
+                x0, y0 = pos[start_node]
+                x1, y1 = pos[end_node]
+                
+                # Get edge time
+                if self.G.has_edge(start_node, end_node):
+                    edge_time = self.G[start_node][end_node]['time']
+                    total_time += edge_time
+                    
+                    # Calculate midpoint for annotation
+                    mid_x = (x0 + x1) / 2
+                    mid_y = (y0 + y1) / 2
+                    
+                    # Add arrow annotation
+                    annotations.append(dict(
+                        x=x1, y=y1,
+                        ax=x0, ay=y0,
+                        xref='x', yref='y',
+                        axref='x', ayref='y',
+                        showarrow=True,
+                        arrowhead=3,
+                        arrowsize=1.5,
+                        arrowwidth=3,
+                        arrowcolor='#FF6B35',
+                        opacity=0.8
+                    ))
+                    
+                    # Add step number and time label
+                    start_name = self.G.nodes[start_node]['name'].split()[0]  # Short name
+                    end_name = self.G.nodes[end_node]['name'].split()[0]
+                    
+                    annotations.append(dict(
+                        x=mid_x, y=mid_y,
+                        text=f"<b>Step {i+1}</b><br>{edge_time} min",
+                        showarrow=False,
+                        font=dict(
+                            size=11,
+                            color='white',
+                            family='Arial Black'
+                        ),
+                        bgcolor='#FF6B35',
+                        borderpad=4,
+                        borderwidth=2,
+                        bordercolor='white',
+                        opacity=0.95
+                    ))
+            
+            # Add START marker
+            start_pos = pos[path[0]]
+            annotations.append(dict(
+                x=start_pos[0], y=start_pos[1],
+                text="🚩 START",
+                showarrow=True,
+                arrowhead=2,
+                arrowsize=1,
+                arrowwidth=2,
+                arrowcolor='green',
+                ax=0, ay=-40,
+                font=dict(size=13, color='green', family='Arial Black'),
+                bgcolor='rgba(255,255,255,0.9)',
+                borderpad=4
+            ))
+            
+            # Add FINISH marker
+            end_pos = pos[path[-1]]
+            annotations.append(dict(
+                x=end_pos[0], y=end_pos[1],
+                text="🏁 FINISH",
+                showarrow=True,
+                arrowhead=2,
+                arrowsize=1,
+                arrowwidth=2,
+                arrowcolor='red',
+                ax=0, ay=40,
+                font=dict(size=13, color='red', family='Arial Black'),
+                bgcolor='rgba(255,255,255,0.9)',
+                borderpad=4
+            ))
+            
+            # Add total time info box
+            annotations.append(dict(
+                x=0.02, y=0.98,
+                xref='paper', yref='paper',
+                text=f"<b>RUTE OPTIMAL</b><br>" + 
+                     f"Path: {' → '.join(path)}<br>" +
+                     f"Total Waktu: <b>{total_time} menit</b><br>" +
+                     f"Pemberhentian: {len(path)} lokasi",
+                showarrow=False,
+                font=dict(size=11, color='#1D3557', family='Arial'),
+                bgcolor='rgba(42, 157, 143, 0.15)',
+                bordercolor='#2A9D8F',
+                borderwidth=2,
+                borderpad=8,
+                align='left',
+                xanchor='left',
+                yanchor='top'
+            ))
         
         # Create figure
-        fig = go.Figure(data=data)
+        fig = go.Figure(data=data_traces)
         
+        # Update layout with annotations
         fig.update_layout(
-            title=dict(text=title, font=dict(size=18)),
+            title=dict(text=title, font=dict(size=18, family='Arial Black')),
             showlegend=True,
             hovermode='closest',
-            margin=dict(b=0, l=0, r=0, t=40),
+            margin=dict(b=20, l=20, r=20, t=80),
             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
             plot_bgcolor='white',
             paper_bgcolor='white',
-            height=700
+            height=800,
+            width=1400,
+            annotations=annotations,
+            legend=dict(
+                x=0.02, y=0.02,
+                bgcolor='rgba(255,255,255,0.9)',
+                bordercolor='#457B9D',
+                borderwidth=1
+            )
         )
         
         return fig

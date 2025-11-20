@@ -63,17 +63,25 @@ fig1.add_trace(
 
 fig1.update_xaxes(tickangle=-45)
 fig1.update_layout(
-    title_text='Analisis Multi-Metrik Performa 9 Algoritma Routing',
+    title=dict(
+        text='Analisis Multi-Metrik Performa 9 Algoritma Routing',
+        font=dict(size=16, family='Arial'),
+        y=0.95,
+        x=0.5,
+        xanchor='center',
+        yanchor='top'
+    ),
     showlegend=False,
-    height=800,
+    height=850,
     width=1400,
+    margin=dict(t=100, b=100, l=80, r=80),
     plot_bgcolor='white',
     paper_bgcolor='white',
     font=dict(size=11, family='Arial')
 )
 
 fig1.write_html('img/multi_metric_analysis.html')
-fig1.write_image('img/multi_metric_analysis.png', width=1400, height=800, scale=2)
+fig1.write_image('img/multi_metric_analysis.png', width=1400, height=850, scale=2)
 print("   Saved: img/multi_metric_analysis.png")
 
 # ============================================================================
@@ -108,20 +116,28 @@ for _, row in df.iterrows():
     ))
 
 fig2.update_layout(
-    title='Efisiensi Komputasi vs Kualitas Solusi<br><sub>Ukuran marker = waktu tempuh | Hijau = optimal, Merah = suboptimal</sub>',
+    title=dict(
+        text='Efisiensi Komputasi vs Kualitas Solusi<br><sub>Ukuran marker = waktu tempuh | Hijau = optimal, Merah = suboptimal</sub>',
+        font=dict(size=16, family='Arial'),
+        y=0.95,
+        x=0.5,
+        xanchor='center',
+        yanchor='top'
+    ),
     xaxis_title='Jumlah Iterasi (log scale)',
     yaxis_title='Execution Time (ms)',
     xaxis_type='log',
     plot_bgcolor='white',
     paper_bgcolor='white',
-    height=700,
+    height=750,
     width=1400,
+    margin=dict(t=120, b=80, l=80, r=80),
     showlegend=False,
     font=dict(size=12, family='Arial')
 )
 
 fig2.write_html('img/efficiency_scatter.html')
-fig2.write_image('img/efficiency_scatter.png', width=1400, height=700, scale=2)
+fig2.write_image('img/efficiency_scatter.png', width=1400, height=750, scale=2)
 print("   Saved: img/efficiency_scatter.png")
 
 # ============================================================================
@@ -177,17 +193,32 @@ fig3.update_layout(
         radialaxis=dict(visible=True, range=[0, 100], showline=True, 
                        linewidth=2, gridcolor='lightgray')
     ),
-    title='Radar Perbandingan Karakteristik Algoritma<br><sub>Skor 0-100 (lebih tinggi = lebih baik)</sub>',
+    title=dict(
+        text='Radar Perbandingan Karakteristik Algoritma<br><sub>Skor 0-100 (lebih tinggi = lebih baik)</sub>',
+        font=dict(size=16, family='Arial'),
+        y=0.95,
+        x=0.5,
+        xanchor='center',
+        yanchor='top'
+    ),
     showlegend=True,
-    legend=dict(orientation='v', x=1.1, y=0.5),
-    height=700,
-    width=1400,
+    legend=dict(
+        orientation='v', 
+        x=1.15, 
+        y=0.5,
+        bgcolor='rgba(255,255,255,0.9)',
+        bordercolor='#457B9D',
+        borderwidth=1
+    ),
+    height=750,
+    width=1600,
+    margin=dict(l=80, r=250, t=130, b=80),
     font=dict(size=12, family='Arial'),
     paper_bgcolor='white'
 )
 
 fig3.write_html('img/radar_complexity.html')
-fig3.write_image('img/radar_complexity.png', width=1400, height=700, scale=2)
+fig3.write_image('img/radar_complexity.png', width=1600, height=750, scale=2)
 print("   Saved: img/radar_complexity.png")
 
 # ============================================================================
@@ -234,16 +265,23 @@ fig4 = go.Figure(data=[go.Table(
 )])
 
 fig4.update_layout(
-    title='Ranking Komprehensif Algoritma Routing Ambulans Air<br><sub>Hijau = Excellent | Kuning = Good | Merah = Fair</sub>',
-    height=600,
-    width=1400,
-    margin=dict(l=80, r=80, t=100, b=80),
+    title=dict(
+        text='Ranking Komprehensif Algoritma Routing Ambulans Air<br><sub>Hijau = Excellent | Kuning = Good | Merah = Fair</sub>',
+        font=dict(size=16, family='Arial'),
+        y=0.95,
+        x=0.5,
+        xanchor='center',
+        yanchor='top'
+    ),
+    height=700,
+    width=1500,
+    margin=dict(l=50, r=50, t=150, b=50),
     font=dict(family='Arial', size=12),
     paper_bgcolor='white'
 )
 
 fig4.write_html('img/comprehensive_ranking.html')
-fig4.write_image('img/comprehensive_ranking.png', width=1400, height=600, scale=2)
+fig4.write_image('img/comprehensive_ranking.png', width=1500, height=700, scale=2)
 print("   Saved: img/comprehensive_ranking.png")
 
 # ============================================================================
@@ -283,21 +321,38 @@ for category in df_path['Category'].unique():
     ))
 
 fig5.update_layout(
-    title='Analisis Kompleksitas Rute: Pemberhentian vs Waktu Tempuh<br><sub>Trade-off antara jumlah hop dan total waktu</sub>',
+    title=dict(
+        text='Analisis Kompleksitas Rute: Pemberhentian vs Waktu Tempuh<br><sub>Trade-off antara jumlah hop dan total waktu</sub>',
+        font=dict(size=16, family='Arial'),
+        y=0.92,
+        x=0.5,
+        xanchor='center',
+        yanchor='top'
+    ),
     xaxis_title='Algoritma',
     yaxis_title='Jumlah Pemberhentian',
     barmode='group',
     plot_bgcolor='white',
     paper_bgcolor='white',
-    height=600,
+    height=700,
     width=1400,
+    margin=dict(l=80, r=120, t=160, b=120),
     font=dict(size=12, family='Arial'),
-    legend=dict(x=0.7, y=0.95),
+    legend=dict(
+        x=0.5, 
+        y=1.08,
+        xanchor='center',
+        yanchor='bottom',
+        orientation='h',
+        bgcolor='rgba(255,255,255,0.95)',
+        bordercolor='#457B9D',
+        borderwidth=2
+    ),
     xaxis=dict(tickangle=-45)
 )
 
 fig5.write_html('img/path_complexity.html')
-fig5.write_image('img/path_complexity.png', width=1400, height=600, scale=2)
+fig5.write_image('img/path_complexity.png', width=1400, height=700, scale=2)
 print("   Saved: img/path_complexity.png")
 
 print("\n" + "=" * 80)
