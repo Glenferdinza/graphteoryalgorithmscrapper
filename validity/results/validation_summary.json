@@ -1,0 +1,47 @@
+{
+  "A*": {
+    "total_tests": 20,
+    "optimal_count": 20,
+    "optimal_percentage": 100.0,
+    "avg_execution_time_ms": 0.193165000382578,
+    "avg_memory_mb": 0.00211639404296875,
+    "avg_iterations": 7.55,
+    "max_weight_difference": 0.0
+  },
+  "Dijkstra": {
+    "total_tests": 20,
+    "optimal_count": 20,
+    "optimal_percentage": 100.0,
+    "avg_execution_time_ms": 0.09186999959638342,
+    "avg_memory_mb": 0.00146026611328125,
+    "avg_iterations": 7.65,
+    "max_weight_difference": 0.0
+  },
+  "Bellman-Ford": {
+    "total_tests": 20,
+    "optimal_count": 20,
+    "optimal_percentage": 100.0,
+    "avg_execution_time_ms": 0.2915450000728015,
+    "avg_memory_mb": 0.0024471282958984375,
+    "avg_iterations": 4.3,
+    "max_weight_difference": 0.0
+  },
+  "BFS": {
+    "total_tests": 20,
+    "optimal_count": 20,
+    "optimal_percentage": 100.0,
+    "avg_execution_time_ms": 0.05367000121623278,
+    "avg_memory_mb": 0.00218658447265625,
+    "avg_iterations": 6.35,
+    "max_weight_difference": 0.0
+  },
+  "DFS": {
+    "total_tests": 20,
+    "optimal_count": 20,
+    "optimal_percentage": 100.0,
+    "avg_execution_time_ms": 0.055544999850098975,
+    "avg_memory_mb": 0.0012603759765625,
+    "avg_iterations": 8.6,
+    "max_weight_difference": 157.0
+  }
+}

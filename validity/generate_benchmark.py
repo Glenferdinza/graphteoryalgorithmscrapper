@@ -252,7 +252,7 @@ if __name__ == "__main__":
     df = add_derived_metrics(df)
     
     # Save results
-    output_file = 'csv/data_validated.csv'
+    output_file = 'validity/results/data_validated.csv'
     df.to_csv(output_file, index=False)
     
     print(f"\n Results saved to: {output_file}")

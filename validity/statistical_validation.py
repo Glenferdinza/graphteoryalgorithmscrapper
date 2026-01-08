@@ -259,7 +259,7 @@ class ComplexityValidator:
         self.results['comparisons'] = results
         return pd.DataFrame(results)
     
-    def generate_complexity_plots(self, output_dir: str = 'img'):
+    def generate_complexity_plots(self, output_dir: str = 'validity/img'):
         """
         Generate plots untuk visualisasi kompleksitas
         """
@@ -320,12 +320,31 @@ class ComplexityValidator:
         print(f"   Saved: {output_dir}/correlation_heatmap.png")
         plt.close()
     
-    def export_results(self, filepath: str = 'csv/statistical_validation.json'):
+    def export_results(self, filepath: str = 'validity/results/statistical_validation.json'):
         """
         Export validation results to JSON
         """
+        # Convert numpy/pandas types to Python native types
+        def convert_to_native(obj):
+            if isinstance(obj, dict):
+                return {k: convert_to_native(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_to_native(item) for item in obj]
+            elif hasattr(obj, 'item'):  # numpy types
+                return obj.item()
+            elif isinstance(obj, (np.bool_, bool)):
+                return bool(obj)
+            elif isinstance(obj, (np.integer, np.int64)):
+                return int(obj)
+            elif isinstance(obj, (np.floating, np.float64)):
+                return float(obj)
+            else:
+                return obj
+        
+        results_serializable = convert_to_native(self.results)
+        
         with open(filepath, 'w') as f:
-            json.dump(self.results, f, indent=2)
+            json.dump(results_serializable, f, indent=2)
         
         print(f"\n Statistical validation results saved to: {filepath}")
 
@@ -338,10 +357,10 @@ if __name__ == "__main__":
     
     # Load benchmark data
     try:
-        df = pd.read_csv('csv/data_validated.csv')
-        print(f" Loaded data_validated.csv: {len(df)} benchmarks")
+        df = pd.read_csv('validity/results/data_validated.csv')
+        print(f"Loaded data_validated.csv: {len(df)} benchmarks")
     except FileNotFoundError:
-        print("  data_validated.csv not found. Using data.csv instead.")
+        print("data_validated.csv not found. Using csv/data.csv instead.")
         df = pd.read_csv('csv/data.csv')
     
     # Initialize validator

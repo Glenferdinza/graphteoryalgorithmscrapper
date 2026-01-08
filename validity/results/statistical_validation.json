@@ -1,0 +1,134 @@
+{
+  "time_complexity": [
+    {
+      "algorithm": "A*",
+      "model": "O(E log V)",
+      "error": "`x` and `y` must be broadcastable.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "A*",
+      "model": "O(E)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Dijkstra",
+      "model": "O(E log V)",
+      "error": "`x` and `y` must be broadcastable.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Dijkstra",
+      "model": "O(E)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Bellman-Ford",
+      "model": "O(V * E)",
+      "error": "`x` and `y` must be broadcastable.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "BFS",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "BFS",
+      "model": "O(E)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "DFS",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "DFS",
+      "model": "O(E)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    }
+  ],
+  "memory_complexity": [
+    {
+      "algorithm": "A*",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Dijkstra",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Bellman-Ford",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "BFS",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "DFS",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    }
+  ],
+  "comparisons": [
+    {
+      "comparison": "A* vs Dijkstra",
+      "metric": "execution_time_ms",
+      "t_statistic": 0.9045885445593761,
+      "p_value": 0.3710996699890857,
+      "significant": false
+    },
+    {
+      "comparison": "Optimal vs Non-optimal",
+      "metric": "total_weight",
+      "t_statistic": -2.4284197881651925,
+      "p_value": 0.01689797277823108,
+      "significant": true
+    }
+  ]
+}

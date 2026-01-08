@@ -146,7 +146,7 @@ class AlgorithmValidator:
         
         return df
     
-    def export_validation_report(self, df: pd.DataFrame, filepath: str = 'csv/validation_results.csv'):
+    def export_validation_report(self, df: pd.DataFrame, filepath: str = 'validity/results/validation_results.csv'):
         """
         Export validation results to CSV
         """
@@ -257,9 +257,21 @@ if __name__ == "__main__":
         print(f"   Avg Iterations: {stats['avg_iterations']:.1f}")
         print(f"   Max Weight Diff: {stats['max_weight_difference']:.6f}")
     
-    # Save summary as JSON
-    with open('csv/validation_summary.json', 'w') as f:
-        json.dump(summary, f, indent=2)
+    # Save summary as JSON (convert numpy types to Python native types)
+    summary_serializable = {}
+    for algo, stats in summary.items():
+        summary_serializable[algo] = {
+            'total_tests': int(stats['total_tests']),
+            'optimal_count': int(stats['optimal_count']),
+            'optimal_percentage': float(stats['optimal_percentage']),
+            'avg_execution_time_ms': float(stats['avg_execution_time_ms']),
+            'avg_memory_mb': float(stats['avg_memory_mb']),
+            'avg_iterations': float(stats['avg_iterations']),
+            'max_weight_difference': float(stats['max_weight_difference'])
+        }
+    
+    with open('validity/results/validation_summary.json', 'w') as f:
+        json.dump(summary_serializable, f, indent=2)
     
     print("\n" + "=" * 80)
-    print(" Validation complete! Check csv/validation_results.csv for details.")
+    print("Validation complete! Check validity/results/validation_results.csv for details.")
