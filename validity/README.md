@@ -157,5 +157,5 @@ Install: `pip install -r ../requirements.txt`
 
 ---
 
-**Generated**: January 8, 2026  
+**Created**: January 8, 2026  
 **Project**: Water Ambulance Routing - Graph Theory Research
