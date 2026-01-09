@@ -71,6 +71,38 @@
       "r_squared": 0,
       "correlation": 0,
       "p_value": 1
+    },
+    {
+      "algorithm": "Multi-Source-BFS",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Multi-Source-BFS",
+      "model": "O(E)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Topological-Sort",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Topological-Sort",
+      "model": "O(E)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
     }
   ],
   "memory_complexity": [
@@ -113,14 +145,30 @@
       "r_squared": 0,
       "correlation": 0,
       "p_value": 1
+    },
+    {
+      "algorithm": "Multi-Source-BFS",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
+    },
+    {
+      "algorithm": "Topological-Sort",
+      "model": "O(V)",
+      "error": "Result from function call is not a proper array of floats.",
+      "r_squared": 0,
+      "correlation": 0,
+      "p_value": 1
     }
   ],
   "comparisons": [
     {
       "comparison": "A* vs Dijkstra",
       "metric": "execution_time_ms",
-      "t_statistic": 0.9045885445593761,
-      "p_value": 0.3710996699890857,
+      "t_statistic": 1.0714023738500837,
+      "p_value": 0.29041065871536315,
       "significant": false
     },
     {

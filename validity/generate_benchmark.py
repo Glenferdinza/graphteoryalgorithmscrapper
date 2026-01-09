@@ -77,7 +77,9 @@ def benchmark_algorithm_on_graph(pathfinder: GraphPathfinder,
         'Dijkstra': pathfinder.dijkstra,
         'Bellman-Ford': pathfinder.bellman_ford,
         'BFS': pathfinder.bfs,
-        'DFS': pathfinder.dfs
+        'DFS': pathfinder.dfs,
+        'Multi-Source-BFS': lambda s, g: pathfinder.multi_source_bfs([s], g),
+        'Topological-Sort': lambda s, g: pathfinder.topological_sort()
     }
     
     algo_func = algorithms[algorithm_name]
@@ -89,7 +91,9 @@ def benchmark_algorithm_on_graph(pathfinder: GraphPathfinder,
         'Dijkstra': 'O(E log V)',
         'Bellman-Ford': 'O(V * E)',
         'BFS': 'O(V + E)',
-        'DFS': 'O(V + E)'
+        'DFS': 'O(V + E)',
+        'Multi-Source-BFS': 'O(V + E)',
+        'Topological-Sort': 'O(V + E)'
     }
     
     return {
@@ -125,7 +129,8 @@ def generate_comprehensive_benchmark() -> pd.DataFrame:
         {'size': 'large', 'nodes': 1000, 'density': 0.03, 'runs': 1},
     ]
     
-    algorithms = ['A*', 'Dijkstra', 'Bellman-Ford', 'BFS', 'DFS']
+    algorithms = ['A*', 'Dijkstra', 'Bellman-Ford', 'BFS', 'DFS', 
+                  'Multi-Source-BFS', 'Topological-Sort']
     
     all_results = []
     

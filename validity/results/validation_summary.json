@@ -3,16 +3,16 @@
     "total_tests": 20,
     "optimal_count": 20,
     "optimal_percentage": 100.0,
-    "avg_execution_time_ms": 0.193165000382578,
-    "avg_memory_mb": 0.00211639404296875,
-    "avg_iterations": 7.55,
+    "avg_execution_time_ms": 0.1998149999508314,
+    "avg_memory_mb": 0.0022369384765625,
+    "avg_iterations": 7.45,
     "max_weight_difference": 0.0
   },
   "Dijkstra": {
     "total_tests": 20,
     "optimal_count": 20,
     "optimal_percentage": 100.0,
-    "avg_execution_time_ms": 0.09186999959638342,
+    "avg_execution_time_ms": 0.11493500003325607,
     "avg_memory_mb": 0.00146026611328125,
     "avg_iterations": 7.65,
     "max_weight_difference": 0.0
@@ -21,7 +21,7 @@
     "total_tests": 20,
     "optimal_count": 20,
     "optimal_percentage": 100.0,
-    "avg_execution_time_ms": 0.2915450000728015,
+    "avg_execution_time_ms": 0.27371000001039647,
     "avg_memory_mb": 0.0024471282958984375,
     "avg_iterations": 4.3,
     "max_weight_difference": 0.0
@@ -30,7 +30,7 @@
     "total_tests": 20,
     "optimal_count": 20,
     "optimal_percentage": 100.0,
-    "avg_execution_time_ms": 0.05367000121623278,
+    "avg_execution_time_ms": 0.07166999998844403,
     "avg_memory_mb": 0.00218658447265625,
     "avg_iterations": 6.35,
     "max_weight_difference": 0.0
@@ -39,9 +39,27 @@
     "total_tests": 20,
     "optimal_count": 20,
     "optimal_percentage": 100.0,
-    "avg_execution_time_ms": 0.055544999850098975,
+    "avg_execution_time_ms": 0.07876499998928921,
     "avg_memory_mb": 0.0012603759765625,
     "avg_iterations": 8.6,
     "max_weight_difference": 157.0
+  },
+  "Multi-Source-BFS": {
+    "total_tests": 20,
+    "optimal_count": 20,
+    "optimal_percentage": 100.0,
+    "avg_execution_time_ms": 0.07558999996035709,
+    "avg_memory_mb": 0.002178192138671875,
+    "avg_iterations": 6.35,
+    "max_weight_difference": 0.0
+  },
+  "Topological-Sort": {
+    "total_tests": 20,
+    "optimal_count": 20,
+    "optimal_percentage": 100.0,
+    "avg_execution_time_ms": 0.1816899999994348,
+    "avg_memory_mb": 0.00207061767578125,
+    "avg_iterations": 16.0,
+    "max_weight_difference": 93.0
   }
 }

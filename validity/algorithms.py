@@ -352,6 +352,349 @@ class GraphPathfinder:
         result.memory_usage_mb = peak_memory / 1024 / 1024
         
         return result
+    
+    def topological_sort(self) -> PathfindingResult:
+        """
+        Implementasi Topological Sort untuk DAG (Directed Acyclic Graph)
+        Time Complexity: O(V + E)
+        Space Complexity: O(V)
+        Note: Hanya untuk directed graph tanpa cycle
+        """
+        result = PathfindingResult("Topological-Sort", "START", "END")
+        
+        # Start tracking
+        tracemalloc.start()
+        start_time = time.perf_counter()
+        
+        # Calculate in-degree untuk setiap node
+        in_degree = {node: 0 for node in self.graph.nodes()}
+        for u, v in self.graph.edges():
+            in_degree[v] += 1
+        
+        # Queue untuk nodes dengan in-degree 0
+        queue = deque([node for node in in_degree if in_degree[node] == 0])
+        topo_order = []
+        
+        while queue:
+            result.iterations += 1
+            node = queue.popleft()
+            topo_order.append(node)
+            result.nodes_explored.append(node)
+            
+            for neighbor in self.graph.neighbors(node):
+                in_degree[neighbor] -= 1
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
+        
+        # Check if graph is DAG (no cycle)
+        if len(topo_order) == len(self.graph.nodes()):
+            result.path = topo_order
+            result.path_length = len(topo_order)
+            result.total_weight = len(topo_order)
+            result.success = True
+        else:
+            result.success = False  # Graph has cycle
+        
+        # Stop tracking
+        end_time = time.perf_counter()
+        current_memory, peak_memory = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        
+        result.execution_time_ms = (end_time - start_time) * 1000
+        result.memory_usage_mb = peak_memory / 1024 / 1024
+        
+        return result
+    
+    def multi_source_bfs(self, sources: List[str], goal: str) -> PathfindingResult:
+        """
+        Implementasi Multi-Source BFS
+        Time Complexity: O(V + E)
+        Space Complexity: O(V)
+        Berguna untuk routing dari multiple sources ke single destination
+        """
+        result = PathfindingResult("Multi-Source-BFS", str(sources), goal)
+        
+        # Start tracking
+        tracemalloc.start()
+        start_time = time.perf_counter()
+        
+        # BFS dari multiple sources
+        queue = deque(sources)
+        visited = set(sources)
+        came_from = {source: None for source in sources}
+        found_from = None
+        
+        while queue:
+            result.iterations += 1
+            current = queue.popleft()
+            result.nodes_explored.append(current)
+            
+            # Goal reached
+            if current == goal:
+                found_from = current
+                break
+            
+            # Explore neighbors
+            for neighbor in self.graph.neighbors(current):
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    came_from[neighbor] = current
+                    queue.append(neighbor)
+        
+        # Reconstruct path from closest source
+        if found_from:
+            path = []
+            current = goal
+            while current is not None:
+                path.append(current)
+                current = came_from[current]
+            path.reverse()
+            
+            result.path = path
+            result.path_length = len(path)
+            # Calculate total weight
+            result.total_weight = sum(
+                self.graph[result.path[i]][result.path[i+1]].get('weight', 1)
+                for i in range(len(result.path) - 1)
+            )
+            result.success = True
+        
+        # Stop tracking
+        end_time = time.perf_counter()
+        current_memory, peak_memory = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        
+        result.execution_time_ms = (end_time - start_time) * 1000
+        result.memory_usage_mb = peak_memory / 1024 / 1024
+        
+        return result
+    
+    def floyd_warshall(self) -> Tuple[Dict, Dict]:
+        """
+        Implementasi Floyd-Warshall Algorithm
+        Time Complexity: O(V^3)
+        Space Complexity: O(V^2)
+        Menghitung shortest path antara ALL pairs of nodes
+        """
+        # Start tracking
+        tracemalloc.start()
+        start_time = time.perf_counter()
+        
+        nodes = list(self.graph.nodes())
+        n = len(nodes)
+        node_index = {node: i for i, node in enumerate(nodes)}
+        
+        # Initialize distance matrix
+        INF = float('inf')
+        dist = [[INF] * n for _ in range(n)]
+        next_node = [[None] * n for _ in range(n)]
+        
+        # Set diagonal to 0
+        for i in range(n):
+            dist[i][i] = 0
+        
+        # Set edges
+        for u, v, data in self.graph.edges(data=True):
+            i, j = node_index[u], node_index[v]
+            weight = data.get('weight', 1)
+            dist[i][j] = weight
+            dist[j][i] = weight  # Undirected graph
+            next_node[i][j] = j
+            next_node[j][i] = i
+        
+        # Floyd-Warshall algorithm
+        iterations = 0
+        for k in range(n):
+            for i in range(n):
+                for j in range(n):
+                    iterations += 1
+                    if dist[i][k] + dist[k][j] < dist[i][j]:
+                        dist[i][j] = dist[i][k] + dist[k][j]
+                        next_node[i][j] = next_node[i][k]
+        
+        # Stop tracking
+        end_time = time.perf_counter()
+        current_memory, peak_memory = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        
+        execution_time_ms = (end_time - start_time) * 1000
+        memory_usage_mb = peak_memory / 1024 / 1024
+        
+        # Convert to dict format
+        dist_dict = {}
+        next_dict = {}
+        for i, u in enumerate(nodes):
+            for j, v in enumerate(nodes):
+                dist_dict[(u, v)] = dist[i][j]
+                next_dict[(u, v)] = nodes[next_node[i][j]] if next_node[i][j] is not None else None
+        
+        return {
+            'dist': dist_dict,
+            'next': next_dict,
+            'execution_time_ms': execution_time_ms,
+            'memory_usage_mb': memory_usage_mb,
+            'iterations': iterations,
+            'nodes': nodes
+        }
+    
+    def floyd_warshall_path(self, start: str, goal: str, fw_result: Dict) -> PathfindingResult:
+        """
+        Extract path dari Floyd-Warshall result
+        """
+        result = PathfindingResult("Floyd-Warshall", start, goal)
+        
+        result.execution_time_ms = fw_result['execution_time_ms']
+        result.memory_usage_mb = fw_result['memory_usage_mb']
+        result.iterations = fw_result['iterations']
+        
+        # Reconstruct path
+        if fw_result['dist'][(start, goal)] == float('inf'):
+            result.success = False
+            return result
+        
+        path = [start]
+        current = start
+        while current != goal:
+            current = fw_result['next'][(current, goal)]
+            if current is None:
+                result.success = False
+                return result
+            path.append(current)
+        
+        result.path = path
+        result.path_length = len(path)
+        result.total_weight = fw_result['dist'][(start, goal)]
+        result.success = True
+        
+        return result
+    
+    def johnsons_algorithm(self) -> Dict:
+        """
+        Implementasi Johnson's Algorithm untuk All-Pairs Shortest Path
+        Time Complexity: O(V^2 log V + VE)
+        Space Complexity: O(V^2)
+        Lebih efisien dari Floyd-Warshall untuk sparse graph
+        """
+        # Start tracking
+        tracemalloc.start()
+        start_time = time.perf_counter()
+        
+        # Step 1: Add new node q connected to all nodes with weight 0
+        G_temp = self.graph.copy()
+        q = 'TEMP_Q_NODE'
+        for node in list(self.graph.nodes()):
+            G_temp.add_edge(q, node, weight=0)
+        
+        # Step 2: Run Bellman-Ford dari q untuk detect negative cycle
+        temp_pathfinder = GraphPathfinder(G_temp)
+        distances_from_q = {}
+        iterations = 0
+        
+        # Simplified Bellman-Ford
+        dist = {node: float('inf') for node in G_temp.nodes()}
+        dist[q] = 0
+        
+        for _ in range(len(G_temp.nodes()) - 1):
+            for u, v, data in G_temp.edges(data=True):
+                iterations += 1
+                weight = data.get('weight', 1)
+                if dist[u] + weight < dist[v]:
+                    dist[v] = dist[u] + weight
+        
+        # Check for negative cycle
+        has_negative_cycle = False
+        for u, v, data in G_temp.edges(data=True):
+            weight = data.get('weight', 1)
+            if dist[u] + weight < dist[v]:
+                has_negative_cycle = True
+                break
+        
+        if has_negative_cycle:
+            tracemalloc.stop()
+            return {'error': 'Graph contains negative cycle'}
+        
+        distances_from_q = {node: dist[node] for node in self.graph.nodes()}
+        
+        # Step 3: Reweight edges: w'(u,v) = w(u,v) + h(u) - h(v)
+        G_reweighted = self.graph.copy()
+        for u, v, data in G_reweighted.edges(data=True):
+            old_weight = data.get('weight', 1)
+            new_weight = old_weight + distances_from_q[u] - distances_from_q[v]
+            G_reweighted[u][v]['weight'] = new_weight
+        
+        # Step 4: Run Dijkstra dari setiap node
+        all_pairs_dist = {}
+        reweighted_pathfinder = GraphPathfinder(G_reweighted)
+        
+        for source in self.graph.nodes():
+            dijkstra_result = reweighted_pathfinder.dijkstra(source, list(self.graph.nodes())[0])
+            # Get distances to all nodes (simplified)
+            for target in self.graph.nodes():
+                if source == target:
+                    all_pairs_dist[(source, target)] = 0
+                else:
+                    # Try to get distance
+                    temp_result = reweighted_pathfinder.dijkstra(source, target)
+                    if temp_result.success:
+                        # Correct weight: d(u,v) = d'(u,v) - h(u) + h(v)
+                        corrected_weight = (temp_result.total_weight - 
+                                          distances_from_q[source] + 
+                                          distances_from_q[target])
+                        all_pairs_dist[(source, target)] = corrected_weight
+                        iterations += temp_result.iterations
+                    else:
+                        all_pairs_dist[(source, target)] = float('inf')
+        
+        # Stop tracking
+        end_time = time.perf_counter()
+        current_memory, peak_memory = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        
+        return {
+            'dist': all_pairs_dist,
+            'execution_time_ms': (end_time - start_time) * 1000,
+            'memory_usage_mb': peak_memory / 1024 / 1024,
+            'iterations': iterations,
+            'reweighting': distances_from_q
+        }
+    
+    def johnsons_path(self, start: str, goal: str, johnsons_result: Dict) -> PathfindingResult:
+        """
+        Extract path dari Johnson's Algorithm result
+        """
+        result = PathfindingResult("Johnsons-Algorithm", start, goal)
+        
+        result.execution_time_ms = johnsons_result['execution_time_ms']
+        result.memory_usage_mb = johnsons_result['memory_usage_mb']
+        result.iterations = johnsons_result['iterations']
+        
+        # Get distance
+        dist = johnsons_result['dist'].get((start, goal), float('inf'))
+        
+        if dist == float('inf'):
+            result.success = False
+            return result
+        
+        # Reconstruct path using reweighted graph + Dijkstra
+        h = johnsons_result['reweighting']
+        G_reweighted = self.graph.copy()
+        for u, v, data in G_reweighted.edges(data=True):
+            old_weight = data.get('weight', 1)
+            new_weight = old_weight + h[u] - h[v]
+            G_reweighted[u][v]['weight'] = new_weight
+        
+        pathfinder = GraphPathfinder(G_reweighted)
+        temp_result = pathfinder.dijkstra(start, goal)
+        
+        if temp_result.success:
+            result.path = temp_result.path
+            result.path_length = temp_result.path_length
+            result.total_weight = dist
+            result.success = True
+        else:
+            result.success = False
+        
+        return result
 
 
 if __name__ == "__main__":
@@ -381,18 +724,53 @@ if __name__ == "__main__":
         ('Dijkstra', pathfinder.dijkstra),
         ('Bellman-Ford', pathfinder.bellman_ford),
         ('BFS', pathfinder.bfs),
-        ('DFS', pathfinder.dfs)
+        ('DFS', pathfinder.dfs),
+        ('Topological-Sort', lambda s, g: pathfinder.topological_sort()),
+        ('Multi-Source-BFS', lambda s, g: pathfinder.multi_source_bfs(['D1', 'D2'], g))
     ]
     
     for name, algo_func in algorithms:
-        result = algo_func(start, goal)
-        print(f"\n{name}:")
-        print(f"  Path: {'  '.join(result.path) if result.path else 'Not found'}")
-        print(f"  Total Weight: {result.total_weight:.1f} min")
-        print(f"  Path Length: {result.path_length} nodes")
-        print(f"  Execution Time: {result.execution_time_ms:.3f} ms")
-        print(f"  Memory Usage: {result.memory_usage_mb:.3f} MB")
-        print(f"  Iterations: {result.iterations}")
+        if name in ['Topological-Sort']:
+            result = algo_func(start, goal)
+            print(f"\n{name}:")
+            print(f"  Path: {'  '.join(result.path) if result.path else 'Not found'}")
+            print(f"  Total Weight: {result.total_weight:.1f}")
+            print(f"  Path Length: {result.path_length} nodes")
+            print(f"  Execution Time: {result.execution_time_ms:.3f} ms")
+            print(f"  Memory Usage: {result.memory_usage_mb:.3f} MB")
+            print(f"  Iterations: {result.iterations}")
+        else:
+            result = algo_func(start, goal)
+            print(f"\n{name}:")
+            print(f"  Path: {'  '.join(result.path) if result.path else 'Not found'}")
+            print(f"  Total Weight: {result.total_weight:.1f} min")
+            print(f"  Path Length: {result.path_length} nodes")
+            print(f"  Execution Time: {result.execution_time_ms:.3f} ms")
+            print(f"  Memory Usage: {result.memory_usage_mb:.3f} MB")
+            print(f"  Iterations: {result.iterations}")
+    
+    # Test Floyd-Warshall
+    print("\n\nFloyd-Warshall (All-Pairs Shortest Path):")
+    fw_result = pathfinder.floyd_warshall()
+    print(f"  Execution Time: {fw_result['execution_time_ms']:.3f} ms")
+    print(f"  Memory Usage: {fw_result['memory_usage_mb']:.3f} MB")
+    print(f"  Iterations: {fw_result['iterations']}")
+    fw_path = pathfinder.floyd_warshall_path(start, goal, fw_result)
+    print(f"  Path {start}  {goal}: {'  '.join(fw_path.path) if fw_path.path else 'Not found'}")
+    print(f"  Total Weight: {fw_path.total_weight:.1f} min")
+    
+    # Test Johnson's Algorithm
+    print("\n\nJohnsons-Algorithm (All-Pairs Shortest Path):")
+    johnsons_result = pathfinder.johnsons_algorithm()
+    if 'error' not in johnsons_result:
+        print(f"  Execution Time: {johnsons_result['execution_time_ms']:.3f} ms")
+        print(f"  Memory Usage: {johnsons_result['memory_usage_mb']:.3f} MB")
+        print(f"  Iterations: {johnsons_result['iterations']}")
+        johnsons_path = pathfinder.johnsons_path(start, goal, johnsons_result)
+        print(f"  Path {start}  {goal}: {'  '.join(johnsons_path.path) if johnsons_path.path else 'Not found'}")
+        print(f"  Total Weight: {johnsons_path.total_weight:.1f} min")
+    else:
+        print(f"  Error: {johnsons_result['error']}")
     
     print("\n" + "=" * 70)
     print("\n Algorithm implementation test complete!")

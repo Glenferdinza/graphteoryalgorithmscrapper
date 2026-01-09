@@ -76,8 +76,11 @@ class AlgorithmValidator:
             
             # Untuk optimal algorithms (A*, Dijkstra, Bellman-Ford)
             # Path weight harus sama dengan ground truth
-            if result.algorithm in ['A*', 'Dijkstra', 'Bellman-Ford']:
+            if result.algorithm in ['A*', 'Dijkstra', 'Bellman-Ford', 'Multi-Source-BFS']:
                 validation['is_optimal'] = validation['weight_correct']
+            elif result.algorithm in ['Topological-Sort']:
+                # Topological sort tidak ada path concept (all nodes)
+                validation['is_optimal'] = result.success
             else:
                 # Untuk BFS/DFS, cek apakah path valid (tidak harus optimal)
                 validation['is_optimal'] = result.success
@@ -96,7 +99,9 @@ class AlgorithmValidator:
             'Dijkstra': self.pathfinder.dijkstra,
             'Bellman-Ford': self.pathfinder.bellman_ford,
             'BFS': self.pathfinder.bfs,
-            'DFS': self.pathfinder.dfs
+            'DFS': self.pathfinder.dfs,
+            'Multi-Source-BFS': lambda s, g: self.pathfinder.multi_source_bfs([s], g),
+            'Topological-Sort': lambda s, g: self.pathfinder.topological_sort()
         }
         
         results = []

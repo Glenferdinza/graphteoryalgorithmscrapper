@@ -269,15 +269,21 @@ class ComplexityValidator:
         os.makedirs(output_dir, exist_ok=True)
         
         # Plot 1: Execution time vs Edges
-        fig, axes = plt.subplots(2, 3, figsize=(18, 12))
+        # Calculate grid size dynamically based on number of algorithms
+        n_algos = len(self.df['algorithm'].unique())
+        n_cols = 3
+        n_rows = (n_algos + n_cols - 1) // n_cols  # Ceiling division
+        
+        fig, axes = plt.subplots(n_rows, n_cols, figsize=(18, 4 * n_rows))
         fig.suptitle('Algorithm Complexity Analysis', fontsize=16, fontweight='bold')
         
+        # Flatten axes for easier indexing
+        if n_rows == 1:
+            axes = axes.reshape(1, -1)
+        
         for idx, algo in enumerate(self.df['algorithm'].unique()):
-            if idx >= 6:
-                break
-                
-            row = idx // 3
-            col = idx % 3
+            row = idx // n_cols
+            col = idx % n_cols
             ax = axes[row, col]
             
             algo_df = self.df[self.df['algorithm'] == algo]
@@ -298,6 +304,12 @@ class ComplexityValidator:
             ax.set_title(f'{algo}', fontsize=12, fontweight='bold')
             ax.legend()
             ax.grid(True, alpha=0.3)
+        
+        # Hide unused subplots
+        for idx in range(n_algos, n_rows * n_cols):
+            row = idx // n_cols
+            col = idx % n_cols
+            axes[row, col].axis('off')
         
         plt.tight_layout()
         plt.savefig(f'{output_dir}/complexity_analysis.png', dpi=150, bbox_inches='tight')
