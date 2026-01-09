@@ -368,6 +368,5 @@ Penelitian ini telah membuktikan secara **empiris dan statistik** bahwa:
 
 ---
 
-**Report Generated**: 8 Januari 2026  
-**Validated By**: GitHub Copilot (Claude Sonnet 4.5)  
+**Report Created**: 8 January 2026    
 **Project**: Water Ambulance Routing System
